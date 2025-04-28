@@ -5,12 +5,12 @@
 
 using MessageContainer = std::vector<std::string>;
 
-class Textbox{
+class MyTextbox{
 public:
-	Textbox();
-	Textbox(int l_visible, int l_charSize, 
+	MyTextbox();
+	MyTextbox(int l_visible, int l_charSize, 
 		int l_width, sf::Vector2f l_screenPos);
-	~Textbox();
+	~MyTextbox();
 
 	void Setup(int l_visible, int l_charSize, 
 		int l_width, sf::Vector2f l_screenPos);

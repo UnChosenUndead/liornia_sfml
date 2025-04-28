@@ -6,7 +6,7 @@ target_sources(game_objects
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/sources/Game.cpp
     ${CMAKE_CURRENT_LIST_DIR}/sources/Snake.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/sources/Textbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/sources/MyTextbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/sources/Window.cpp
     ${CMAKE_CURRENT_LIST_DIR}/sources/World.cpp
   PUBLIC
@@ -15,6 +15,7 @@ target_sources(game_objects
     ${CMAKE_CURRENT_LIST_DIR}/includes/World.hpp
     ${CMAKE_CURRENT_LIST_DIR}/includes/Window.hpp
     ${CMAKE_CURRENT_LIST_DIR}/includes/World.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/includes/MyTextbox.hpp
 )
 target_link_libraries(game_objects PRIVATE sfml-graphics)
 target_include_directories(game_objects

@@ -22,7 +22,7 @@ World::World(sf::Vector2u l_windSize)
 		}
 		if (i < 2)
 		{
-			m_bounds[i].setPosition(0, 0);
+			m_bounds[i].setPosition(sf::Vector2f(0, 0));
 		}
 		else
 		{
@@ -40,11 +40,13 @@ void World::RespawnApple()
 {
 	int maxX = (m_windowSize.x / m_blockSize) - 2;
 	int maxY = (m_windowSize.y / m_blockSize) - 2;
-	m_item = sf::Vector2i(
+	m_item = sf::Vector2f(
 		rand() % maxX + 1, rand() % maxY + 1);
 	m_appleShape.setPosition(
+		sf::Vector2f(
 		m_item.x * m_blockSize,
-		m_item.y * m_blockSize);
+		m_item.y * m_blockSize
+	));
 }
 
 void World::Update(Snake &l_player)

@@ -2,7 +2,7 @@
 #include "Window.hpp"
 #include "World.hpp"
 #include "Snake.hpp"
-#include "Textbox.hpp"
+#include "MyTextbox.hpp"
 
 class Game
 {
@@ -26,5 +26,5 @@ private:
 
 	World m_world;
 	Snake m_snake;
-	Textbox m_textbox;
+	MyTextbox m_MyTextbox;
 };

@@ -15,10 +15,10 @@ void Window::Setup(const std::string title, const sf::Vector2u &size)
 
 void Window::Create()
 {
-	auto style = (m_isFullscreen ? sf::Style::Fullscreen
-								 : sf::Style::Default);
-	m_window.create({m_windowSize.x, m_windowSize.y, 32},
-					m_windowTitle, style);
+	auto mode = (m_isFullscreen ? sf::VideoMode::getFullscreenModes()[0]
+								 : sf::VideoMode(sf::Vector2u(800,600), 32));
+	// m_window.create(sf::VideoMode(sf::Vector2u(1920,1080), 32), m_windowTitle);
+	m_window.create(mode, m_windowTitle);
 }
 
 void Window::Destroy()
@@ -44,20 +44,37 @@ void Window::ToggleFullscreen()
 
 void Window::Update()
 {
-	sf::Event event;
-	while (m_window.pollEvent(event))
+	while (const std::optional event = m_window.pollEvent())
 	{
-		if (event.type == sf::Event::Closed)
-		{
+		if (event->is<sf::Event::Closed>()) {
 			m_isDone = true;
 		}
-		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+		else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
 		{
-			m_isDone = true;
-		}
-		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F5)
-		{
-			ToggleFullscreen();
+			if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+			{
+				m_isDone = true;
+			}
+			else if(keyPressed->scancode == sf::Keyboard::Scancode::F5)
+			{
+				ToggleFullscreen();
+			}
 		}
 	}
+	
+	// while (m_window.isOpen())
+	// {
+	// 	if (sf::Event::Closed)
+	// 	{
+	// 		m_isDone = true;
+	// 	}
+	// 	else if (sf::Event::KeyPressed && sf::Keyboard::Key::Escape)
+	// 	{
+	// 		m_isDone = true;
+	// 	}
+	// 	else if (sf::Event::KeyPressed && sf::Keyboard::Key::F5)
+	// 	{
+	// 		ToggleFullscreen();
+	// 	}
+	// }
 }

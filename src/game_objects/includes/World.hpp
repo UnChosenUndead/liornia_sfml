@@ -17,7 +17,7 @@ public:
 
 private:
 	sf::Vector2u m_windowSize;
-	sf::Vector2i m_item;
+	sf::Vector2f m_item;
 	int m_blockSize;
 
 	sf::CircleShape m_appleShape;

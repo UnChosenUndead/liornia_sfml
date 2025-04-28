@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(CMakeSFMLProject LANGUAGES CXX)
+project(liornia_sfml LANGUAGES CXX)
 
 include(GNUInstallDirs)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY

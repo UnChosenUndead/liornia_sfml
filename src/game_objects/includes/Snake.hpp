@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Textbox.hpp"
+#include "MyTextbox.hpp"
 #include <vector>
 
 struct SnakeSegment
 {
-	SnakeSegment(int x, int y) : position(x, y) {}
-	sf::Vector2i position;
+	SnakeSegment(float x, float y) : position(x, y) {}
+	sf::Vector2f position;
 };
 
 using SnakeContainer = std::vector<SnakeSegment>;
@@ -22,14 +22,14 @@ enum class Direction
 class Snake
 {
 public:
-	Snake(int l_blockSize, Textbox *l_log);
+	Snake(int l_blockSize, MyTextbox *l_log);
 	~Snake();
 
 	// Helper methods.
 	void SetDirection(Direction l_dir);
 	Direction GetDirection();
 	int GetSpeed();
-	sf::Vector2i GetPosition();
+	sf::Vector2f GetPosition();
 	int GetLives();
 	int GetScore();
 	void IncreaseScore();
@@ -52,12 +52,12 @@ private:
 	void CheckCollision(); // Checking collisions.
 
 	SnakeContainer m_snakeBody;	   // Segment vector.
-	int m_size;					   // Size of the graphics.
+	float m_size;					   // Size of the graphics.
 	Direction m_dir;			   // Current direction.
 	int m_speed;				   // Speed of the snake.
 	int m_lives;				   // Lives.
 	int m_score;				   // Score.
 	bool m_lost;				   // Losing state.
 	sf::RectangleShape m_bodyRect; // Shape used in rendering.
-	Textbox *m_log;
+	MyTextbox *m_log;
 };

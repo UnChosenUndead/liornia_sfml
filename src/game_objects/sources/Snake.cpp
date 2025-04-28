@@ -1,6 +1,6 @@
 #include "Snake.hpp"
 
-Snake::Snake(int l_blockSize, Textbox *l_log)
+Snake::Snake(int l_blockSize, MyTextbox *l_log)
 {
 	m_log = l_log;
 	m_size = l_blockSize;
@@ -14,9 +14,9 @@ Snake::~Snake() {}
 void Snake::SetDirection(Direction l_dir) { m_dir = l_dir; }
 Direction Snake::GetDirection() { return m_dir; }
 int Snake::GetSpeed() { return m_speed; }
-sf::Vector2i Snake::GetPosition()
+sf::Vector2f Snake::GetPosition()
 {
-	return (!m_snakeBody.empty() ? m_snakeBody.front().position : sf::Vector2i(1, 1));
+	return (!m_snakeBody.empty() ? m_snakeBody.front().position : sf::Vector2f(1, 1));
 }
 
 int Snake::GetLives() { return m_lives; }
@@ -220,16 +220,16 @@ void Snake::Render(sf::RenderWindow &l_window)
 
 	auto head = m_snakeBody.begin();
 	m_bodyRect.setFillColor(sf::Color::Yellow);
-	m_bodyRect.setPosition(head->position.x * m_size,
-						   head->position.y * m_size);
+	m_bodyRect.setPosition(sf::Vector2f(head->position.x * m_size,
+						   head->position.y * m_size));
 	l_window.draw(m_bodyRect);
 
 	m_bodyRect.setFillColor(sf::Color::Green);
 	for (auto itr = m_snakeBody.begin() + 1;
 		 itr != m_snakeBody.end(); ++itr)
 	{
-		m_bodyRect.setPosition(itr->position.x * m_size,
-							   itr->position.y * m_size);
+		m_bodyRect.setPosition(sf::Vector2f(itr->position.x * m_size,
+							   itr->position.y * m_size));
 		l_window.draw(m_bodyRect);
 	}
 }
